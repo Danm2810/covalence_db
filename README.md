@@ -3,7 +3,7 @@
 Concept
 Each vital can have different units of measurement. If we want to store multiple units in the DB, we need to create separate columns for each unit
 
-'''markdown
+'''sql
 CREATE TABLE vital_track (
 	vital_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
 	vital_name VARCHAR(50) NOT NULL,
