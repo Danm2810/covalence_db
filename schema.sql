@@ -1,15 +1,15 @@
-CREATE EXTENSION IF NOT EXISTS "uuid-oosp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE vital_list (
     vital_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    vital_name VARCHAR(50) UNIQUE NOT NULL,
+    vital_name VARCHAR(50) UNIQUE NOT NULL
 );
 
 CREATE TABLE vital_units (
-    unit_id UUID uuid_generate_v4() PRIMARY KEY,
+    unit_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
     vital_id UUID REFERENCES vital_list(vital_id) ON DELETE CASCADE,
     unit_name VARCHAR(50) NOT NULL,
-    unit_symbol VARCHAR(3)
+    unit_symbol VARCHAR(10)
 );
 
 INSERT INTO vital_list(vital_name)
@@ -59,17 +59,17 @@ CREATE TABLE badge_levels (
     level_name VARCHAR(20) NOT NULL,
     condition INTEGER NOT NULL,
     level_description VARCHAR(255)
-)
+);
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
     ('Symptom Tracker', 'Awarded for tracking n symptoms into the system');
 
 INSERT INTO badge_levels (badge_id, level_name, condition, level_description)
-    VALUES
+VALUES
     ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Bronze', 1, 'Logged 1 symptom'),
     ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Silver', 5, 'Logged 5 symptoms')
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Gold', 10, 'Logged 10 SYmptoms');
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Gold', 10, 'Logged 10 symptoms');
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
@@ -77,9 +77,9 @@ VALUES
 
 INSERT INTO badge_levels(badge_id, level_name, condition, level_description)
 VALUES  
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Medicaiton Tracker'), 'Bronze', 1, 'Logged 1 medication'),
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Medication Tracker'), 'Bronze', 1, 'Logged 1 medication'),
     ((SELECT badge_id FROM badges WHERE badge_name = 'Medication Tracker'), 'Silver', 5, 'Logged 5 medications'),
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Medicaiton Tracker'), 'Gold', 10, 'Logged 10 medications');
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Medication Tracker'), 'Gold', 10, 'Logged 10 medications');
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
@@ -98,8 +98,8 @@ VALUES
 INSERT INTO badge_levels(badge_id, level_name, condition, level_description)
 VALUES
     ((SELECT badge_id FROM badges WHERE badge_name = 'Login Tracker'), 'Bronze', 1, 'Logged in 1 time'),
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Login Tracker'). 'Silver', 5, 'Logged in 5 times'),
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Login Tracker'). 'Gold', 10, 'Logged in 10 times');
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Login Tracker'), 'Silver', 5, 'Logged in 5 times'),
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Login Tracker'), 'Gold', 10, 'Logged in 10 times');
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
@@ -107,7 +107,7 @@ VALUES
 
 INSERT INTO badge_levels (badge_id, level_name, condition, level_description),
 VALUES
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Notification'). 'Single', 1, 'Turned on push notificaitons');
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Notification'), 'Single', 1, 'Turned on push notificaitons');
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
@@ -115,15 +115,15 @@ VALUES
 
 INSERT INTO badge_levels (badge_id, level_name, condition, level_description),
 VALUES
-    ((SELECT badge_id FROM badges WHERE badge_name = 'One Year Annie'). 'Single', 1, 'Logged in after one year');
+    ((SELECT badge_id FROM badges WHERE badge_name = 'One Year Annie'), 'Single', 1, 'Logged in after one year');
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
     ('Final Boss', 'Awarded for achieving all badges');
 
-INSERT INTO badge_levels (badge_id, level_name, condition, level_description),
+INSERT INTO badge_levels (badge_id, level_name, condition, level_description)
 VALUES
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Final Boss'). 'Single', 1, 'Collecting all badges');
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Final Boss'), 'Single', 1, 'Collecting all badges');
 
 
 -- CREATE TABLE test_person (
