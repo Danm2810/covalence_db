@@ -105,7 +105,7 @@ INSERT INTO badges (badge_name, badge_description)
 VALUES
     ('Notificaiton', 'Awarded for turning on push notificaitons');
 
-INSERT INTO badge_levels (badge_id, level_name, condition, level_description),
+INSERT INTO badge_levels (badge_id, level_name, condition, level_description)
 VALUES
     ((SELECT badge_id FROM badges WHERE badge_name = 'Notification'), 'Single', 1, 'Turned on push notificaitons');
 
@@ -113,7 +113,7 @@ INSERT INTO badges (badge_name, badge_description)
 VALUES
     ('One Year Annie', 'Awarded for logging in after one year');
 
-INSERT INTO badge_levels (badge_id, level_name, condition, level_description),
+INSERT INTO badge_levels (badge_id, level_name, condition, level_description)
 VALUES
     ((SELECT badge_id FROM badges WHERE badge_name = 'One Year Annie'), 'Single', 1, 'Logged in after one year');
 
