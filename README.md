@@ -1,5 +1,5 @@
 # Covalence Database Schema | PostgreSQL
-## Vital tracker table Specifications
+## Vital tracker Table Specifications
 ### Concept
 Each vital can have different units of measurement. If we want to store multiple units in the DB, we need to create separate columns for each unit
 
@@ -48,3 +48,13 @@ double weightLbs = kgToLbs(weightKg);
 Each distinct unit of measurement (kg, lbs, °C, °F) gets its own column.
 The app handles conversions automatically, so users don’t need to enter both.
 When querying the database, we show whichever unit the user prefers.
+
+
+## Medication Tracker Table Specifications
+### Concept
+
+```badges``` Table
+This table store the general information about each badge and task condition.
+
+```badge_levels``` Table
+This table tracks the levels (e.g., Bronze, Silver, Gold) and the associated number of task completions for each badge.
