@@ -124,3 +124,36 @@ VALUES
 INSERT INTO badge_levels (badge_id, level_name, condition, level_description),
 VALUES
     ((SELECT badge_id FROM badges WHERE badge_name = 'Final Boss'). 'Single', 1, 'Collecting all badges');
+
+
+-- CREATE TABLE test_person (
+--     id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+--     first_name VARCHAR(50) NOT NULL,
+--     last_name VARCHAR(50) NOT NULL,
+--     level_id UUID REFERENCES badge_levels(level_id) ON DELETE CASCADE,  -- Relates to specific badge level
+--     vital_id UUID REFERENCES vital_list(vital_id) ON DELETE CASCADE,
+--     symptom_id UUID REFERENCES symptom_list(symptom_id) ON DELETE CASCADE
+-- );
+
+-- INSERT INTO test_person (first_name, last_name, level_id, vital_id, symptom_id)
+-- VALUES (
+--     'John', 
+--     'Doe', 
+--     (SELECT level_id FROM badge_levels WHERE badge_id = (SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker') AND level_name = 'Bronze'),
+--     (SELECT vital_id FROM vital_list WHERE vital_name = 'Heart Rate'),
+--     (SELECT symptom_id FROM symptom_list WHERE symptom_name = 'Headache')
+-- );
+
+-- SELECT 
+--     tp.id, 
+--     tp.first_name, 
+--     tp.last_name, 
+--     b.badge_name, 
+--     bl.level_name, 
+--     v.vital_name, 
+--     s.symptom_name
+-- FROM test_person tp
+-- LEFT JOIN badge_levels bl ON tp.level_id = bl.level_id
+-- LEFT JOIN badges b ON bl.badge_id = b.badge_id
+-- LEFT JOIN vital_list v ON tp.vital_id = v.vital_id
+-- LEFT JOIN symptom_list s ON tp.symptom_id = s.symptom_id;
