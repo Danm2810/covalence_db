@@ -58,3 +58,15 @@ This table store the general information about each badge and task condition.
 
 ```badge_levels``` Table
 This table tracks the levels (e.g., Bronze, Silver, Gold) and the associated number of task completions for each badge.
+
+
+## Joining Commands
+```LEFT JOIN badge_levels bl``` → Fetches badge level name (e.g., "Bronze").
+
+```LEFT JOIN badges b``` → Fetches badge name (e.g., "Symptom Tracker").
+
+```LEFT JOIN vital_list v``` → Fetches vital name (e.g., "Heart Rate").
+
+```LEFT JOIN symptom_list s``` → Fetches symptom name (e.g., "Headache").
+
+This ensures that when you ```SELECT *```, you see the names instead of just UUIDs.
