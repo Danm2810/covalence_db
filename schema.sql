@@ -68,7 +68,7 @@ VALUES
 INSERT INTO badge_levels (badge_id, level_name, condition, level_description)
 VALUES
     ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Bronze', 1, 'Logged 1 symptom'),
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Silver', 5, 'Logged 5 symptoms')
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Silver', 5, 'Logged 5 symptoms'),
     ((SELECT badge_id FROM badges WHERE badge_name = 'Symptom Tracker'), 'Gold', 10, 'Logged 10 symptoms');
 
 INSERT INTO badges (badge_name, badge_description)
