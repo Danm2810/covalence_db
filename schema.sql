@@ -103,11 +103,11 @@ VALUES
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
-    ('Notificaiton', 'Awarded for turning on push notificaitons');
+    ('Notification', 'Awarded for turning on push notification');
 
 INSERT INTO badge_levels (badge_id, level_name, condition, level_description)
 VALUES
-    ((SELECT badge_id FROM badges WHERE badge_name = 'Notification'), 'Single', 1, 'Turned on push notificaitons');
+    ((SELECT badge_id FROM badges WHERE badge_name = 'Notification'), 'Single', 1, 'Turned on push notification');
 
 INSERT INTO badges (badge_name, badge_description)
 VALUES
