@@ -111,3 +111,18 @@ INSERT INTO test_person (first_name, last_name, level_id, vital_id, symptom_id) 
     (SELECT vital_id FROM vital_list WHERE vital_name = 'Heart Rate'),
     (SELECT symptom_id FROM symptom_list WHERE symptom_name = 'Headache')
 );
+
+--This is to display information in the test_person table, and converting all the UUIDs to their corresponding names
+-- SELECT 
+--     tp.id, 
+--     tp.first_name, 
+--     tp.last_name, 
+--     b.badge_name, 
+--     bl.level_name, 
+--     v.vital_name, 
+--     s.symptom_name
+-- FROM test_person tp
+-- LEFT JOIN badge_levels bl ON tp.level_id = bl.level_id
+-- LEFT JOIN badges b ON bl.badge_id = b.badge_id
+-- LEFT JOIN vital_list v ON tp.vital_id = v.vital_id
+-- LEFT JOIN symptom_list s ON tp.symptom_id = s.symptom_id;
